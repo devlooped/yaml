@@ -1,8 +1,8 @@
 
 
-## [v1.0.0-alpha](https://github.com/devlooped/yaml/tree/v1.0.0-alpha) (2021-09-15)
+## [v1.0.0](https://github.com/devlooped/yaml/tree/v1.0.0) (2021-09-15)
 
-[Full Changelog](https://github.com/devlooped/yaml/compare/c3272555b49d3ad2984a16ca1c5a7f1ff2d75abc...v1.0.0-alpha)
+[Full Changelog](https://github.com/devlooped/yaml/compare/c3272555b49d3ad2984a16ca1c5a7f1ff2d75abc...v1.0.0)
 
 
 
