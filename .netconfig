@@ -150,3 +150,8 @@
 	sha = f2dc1370469bec1b2d32d82faf659b050cdc7e2a
 	etag = d45832acd078778ffebf260000f6d25172a131f51684744d7e982da2a47170ce
 	weak
+[file "src/Tests/Tests.cs"]
+	url = https://github.com/devlooped/json/blob/main/src/Tests/Tests.cs
+	sha = 58dc8b877f3126f91fc1fe6c5b099e232fa4672a
+	etag = a25c1be48e5e3b11c6eddb195d95569968761e11651fc5fe1c150ad53558b9f1
+	weak
