@@ -7,6 +7,7 @@
     <PackFolder>build</PackFolder>
     <PackNone>true</PackNone>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageProjectUrl>https://clarius.org/yaml</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
