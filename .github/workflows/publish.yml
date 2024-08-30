@@ -5,63 +5,52 @@
 name: publish
 on:
   release:
-    types: [released]
+    types: [prereleased, released]
 
 env:
   DOTNET_NOLOGO: true
   Configuration: Release
-
+  PackOnBuild: true
+  GeneratePackageOnBuild: true
+  VersionLabel: ${{ github.ref }}
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  MSBUILDTERMINALLOGGER: auto
+    
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - name: 🤘 checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with: 
           submodules: recursive
           fetch-depth: 0
-          
-      - name: 🙏 build
-        run: dotnet build -m:1 -p:version=${GITHUB_REF#refs/*/v}
 
-      - name: ⚙ GNU grep
-        if: matrix.os == 'macOS-latest'
-        run: |
-          brew install grep
-          echo 'export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"' >> .bash_profile
+      - name: 🙏 build
+        run: dotnet build -m:1 -bl:build.binlog
 
       - name: 🧪 test
-        shell: bash --noprofile --norc {0}
-        env:
-          LC_ALL: en_US.utf8
         run: |
-          [ -f .bash_profile ] && source .bash_profile
-          counter=0
-          exitcode=0
-          reset="\e[0m"
-          warn="\e[0;33m"
-          while [ $counter -lt 6 ]
-          do
-              if [ $filter ]
-              then
-                  echo -e "${warn}Retry $counter for $filter ${reset}"
-              fi
-              # run test and forward output also to a file in addition to stdout (tee command)
-              dotnet test --no-build -m:1 --blame-hang --blame-hang-timeout 5m --filter=$filter | tee ./output.log
-              # capture dotnet test exit status, different from tee
-              exitcode=${PIPESTATUS[0]}
-              if [ $exitcode == 0 ]
-              then
-                  exit 0
-              fi
-              # cat output, get failed test names, join as DisplayName=TEST with |, remove trailing |.
-              filter=$(cat ./output.log | grep -o -P '(?<=\sFailed\s)\w*' | awk 'BEGIN { ORS="|" } { print("DisplayName=" $0) }' | grep -o -P '.*(?=\|$)')
-              ((counter++))
-          done
-          exit $exitcode
+          dotnet tool update -g dotnet-retest
+          dotnet retest -- --no-build
 
-      - name: 📦 pack
-        run: dotnet pack -m:1 -p:version=${GITHUB_REF#refs/*/v}
+      - name: 🐛 logs
+        uses: actions/upload-artifact@v3
+        if: runner.debug && always()
+        with:
+          name: logs
+          path: '*.binlog'
 
       - name: 🚀 nuget
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        if: env.NUGET_API_KEY != ''
         run: dotnet nuget push ./bin/**/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_API_KEY}} --skip-duplicate
+
+      - name: 🚀 sleet
+        env:
+          SLEET_CONNECTION: ${{ secrets.SLEET_CONNECTION }}
+        if: env.SLEET_CONNECTION != ''
+        run: |
+          dotnet tool install -g --version 4.0.18 sleet 
+          sleet push bin --config none -f --verbose -p "SLEET_FEED_CONTAINER=nuget" -p "SLEET_FEED_CONNECTIONSTRING=${{ secrets.SLEET_CONNECTION }}" -p "SLEET_FEED_TYPE=azure" || echo "No packages found"
