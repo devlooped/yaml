@@ -35,7 +35,7 @@ public class YamlPeek : Task
     /// Contains the results that are returned by the task.
     /// </summary>
     [Output]
-    public ITaskItem[] Result { get; private set; } = new ITaskItem[0];
+    public ITaskItem[] Result { get; private set; } = [];
 
     /// <summary>
     /// Executes the <see cref="Query"/> against either the 
@@ -55,7 +55,7 @@ public class YamlPeek : Task
         var content = ContentPath != null ?
             File.ReadAllText(ContentPath.GetMetadata("FullPath")) : Content;
 
-        if (string.IsNullOrEmpty(content))
+        if (content is null || string.IsNullOrEmpty(content))
             return Log.Warn("JPE04", $"Empty JSON content.", true);
 
         var data = new Serializer(new SerializerSettings
@@ -88,7 +88,7 @@ public class YamlPeek : Task
         {
             _ when type == typeof(IDictionary) => new ExpandoObject(),
             _ when type.IsGenericType && type.GetGenericTypeDefinition() == typeof(IDictionary<,>) => new ExpandoObject(),
-            _ => fallback.Create(type),
+            _ => fallback.Create(type)!,
         };
     }
 }
