@@ -4,13 +4,6 @@ VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YamlPeek", "src\YamlPeek\YamlPeek.csproj", "{5233DD34-94A9-4EFC-AD8D-4713DDCD2A31}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{510D32C6-0763-4E6F-8D8C-3F94B56E6F7B}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-		.netconfig = .netconfig
-		readme.md = readme.md
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "src\Tests\Tests.csproj", "{B0D13EE8-F199-49CA-AF1D-D7DBD67E44D9}"
 EndProject
 Global
