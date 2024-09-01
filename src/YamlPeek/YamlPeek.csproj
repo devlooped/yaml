@@ -5,16 +5,12 @@
     <IsPackable>true</IsPackable>
     <Description>MSBuild task to read values from YAML using JSONPath.</Description>
     <PackFolder>build</PackFolder>
-    <PackNone>true</PackNone>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <PackageProjectUrl>https://clarius.org/yaml</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NuGetizer" Version="1.2.3">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="NuGetizer" Version="1.2.3" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" Pack="false" />
     <PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.9.20" Pack="false" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" PrivateAssets="all" />
@@ -23,6 +19,7 @@
 
   <ItemGroup>
     <None Update="@(None)" PackFolder="$(PackFolder)" />
+    <None Update="icon.png" PackFolder="." />
     <None Include="..\..\readme.md" Link="readme.md" Visible="false" Pack="true" PackagePath="readme.md" />
   </ItemGroup>
   

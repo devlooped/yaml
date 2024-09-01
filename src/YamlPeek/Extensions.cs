@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Dynamic;
-using System.IO;
 using System.Linq;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using SharpYaml.Serialization;
 
 static class Extensions
 {
-    static readonly Serializer serializer = new Serializer(new SerializerSettings
+    static readonly Serializer serializer = new(new SerializerSettings
     {
         //ObjectFactory = ExpandoObjectFactory.Default,
         EmitAlias = false,
