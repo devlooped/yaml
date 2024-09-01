@@ -11,17 +11,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NuGetizer" Version="0.7.5" />
+    <PackageReference Include="NuGetizer" Version="1.2.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" Pack="false" />
     <PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.9.20" Pack="false" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" PrivateAssets="all" />
-    <PackageReference Include="SharpYaml" Version="1.8.0" PrivateAssets="all" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" PrivateAssets="all" />
+    <PackageReference Include="SharpYaml" Version="2.1.1" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="@(None)" PackFolder="$(PackFolder)" />
-    <None Include="..\..\readme.md" Link="readme.md" Visible="false"
-          Pack="true" PackagePath="readme.md" />
+    <None Include="..\..\readme.md" Link="readme.md" Visible="false" Pack="true" PackagePath="readme.md" />
   </ItemGroup>
   
 </Project>
