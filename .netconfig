@@ -160,3 +160,8 @@
 	sha = 51e44c3926b1816c04d34aef0ae541138350ca60
 	etag = b69d75dd622e327b9cf433c8d5399da24f96607bb87758514b9cb0142d6f67ea
 	weak
+[file ".github/ISSUE_TEMPLATE/bug.md"]
+	url = https://github.com/devlooped/.github/blob/main/.github/ISSUE_TEMPLATE/bug.md
+	sha = 80e81d21c020841dfc8678f218d42ddaffad78db
+	etag = 6ab86c474f24c915681abf4dca6c5becf3a211ab09d11e290385890dadd6f97f
+	weak
