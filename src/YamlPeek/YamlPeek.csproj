@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -12,9 +12,9 @@
   <ItemGroup>
     <PackageReference Include="NuGetizer" Version="1.2.4" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" Pack="false" />
-    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.9.20" Pack="false" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.14.8" Pack="false" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" PrivateAssets="all" />
-    <PackageReference Include="SharpYaml" Version="2.1.1" PrivateAssets="all" />
+    <PackageReference Include="SharpYaml" Version="2.1.2" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
