@@ -65,7 +65,7 @@ public class YamlPeek : Task
         }).Deserialize(content);
 
         var json = JsonConvert.SerializeObject(data);
-        var jobj = JObject.Parse(json);
+        var jobj = JToken.Parse(json);
 
         Result = jobj.SelectTokens(Query)
             // NOTE: we cannot create items with empty ItemSpec, so skip them entirely.
