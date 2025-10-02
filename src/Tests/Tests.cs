@@ -12,6 +12,23 @@ using Xunit.Abstractions;
 
 public record Tests(ITestOutputHelper Output)
 {
+    [Fact]
+    public void CanParseYamlList()
+    {
+        var task = new YamlPeek
+        {
+            Content =
+                """
+                - name: Star Trek
+                  stuff: yes
+                - name: Star Wars
+                  stuff: no
+                """,
+        };
+
+        Assert.True(task.Execute());
+    }
+
     [Theory]
     [MemberData(nameof(GetTargets))]
     public void Run(string file, string name, bool failure = false, string? code = null)
