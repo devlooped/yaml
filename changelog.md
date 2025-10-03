@@ -1,4 +1,13 @@
+# Changelog
 
+## [v1.0.1](https://github.com/devlooped/yaml/tree/v1.0.1) (2025-10-03)
+
+[Full Changelog](https://github.com/devlooped/yaml/compare/v1.0.0...v1.0.1)
+
+:bug: Fixed bugs:
+
+- Parse fails on lists [\#49](https://github.com/devlooped/yaml/issues/49)
+- Add support for yaml list as root element [\#82](https://github.com/devlooped/yaml/pull/82) (@kzu)
 
 ## [v1.0.0](https://github.com/devlooped/yaml/tree/v1.0.0) (2021-09-15)
 
