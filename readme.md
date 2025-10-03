@@ -4,10 +4,9 @@
 [![Version](https://img.shields.io/nuget/vpre/YamlPeek.svg?color=royalblue)](https://www.nuget.org/packages/YamlPeek)
 [![Downloads](https://img.shields.io/nuget/dt/YamlPeek.svg?color=green)](https://www.nuget.org/packages/YamlPeek)
 [![License](https://img.shields.io/github/license/devlooped/yaml.svg?color=blue)](https://github.com/devlooped/yaml/blob/main/license.txt)
-[![Build](https://github.com/devlooped/yaml/workflows/build/badge.svg?branch=main)](https://github.com/devlooped/yaml/actions)
+[![Build](https://github.com/devlooped/yaml/actions/workflows/build.yml/badge.svg)](https://github.com/devlooped/yaml/actions/workflows/build.yml)
 
 Read values from yaml files using JSONPath query expressions.
-
 
 Usage:
 
